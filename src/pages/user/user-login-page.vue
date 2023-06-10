@@ -47,7 +47,7 @@ export default {
         password: "",
       },
       errorMessage: null,
-      validationRules: { ...validationSchema },
+      validationRules: validationSchema,
       showPass: false,
     };
   },

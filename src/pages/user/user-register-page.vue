@@ -46,7 +46,7 @@ export default {
         active: "false",
       },
       showPass: false,
-      validationRules: { ...validationSchema },
+      validationRules: validationSchema,
     };
   },
   methods: {
