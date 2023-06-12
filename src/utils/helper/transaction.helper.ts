@@ -1,4 +1,5 @@
-export const fieldColors = [
+import moment from "moment";
+const fieldColors = [
   { name: "Jan 2023", color: "#E57373" },
   { name: "Feb 2023", color: "#F06292" },
   { name: "Mar 2023", color: "#AB47BC" },
@@ -21,3 +22,19 @@ export const fieldColors = [
   { name: "Core Realtors", color: "#FFAB00" },
   { name: "Big Block", color: "#4E342E" },
 ];
+
+export const getColor = (fieldName: string) => {
+  return fieldColors.find((field) => field.name === fieldName)?.color;
+};
+
+export const getDateFormat = (date: Date) => {
+  return moment(date).format("LL");
+};
+
+export const getRupeeFormat = (amount: number) => {
+  const rupee = new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+  });
+  return rupee.format(amount);
+};

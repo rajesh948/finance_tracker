@@ -16,7 +16,7 @@
       <tbody class="text-h6">
         <tr>
           <td>Transaction Date</td>
-          <td>{{ transaction.date }}</td>
+          <td>{{ getDateFormat(transaction.date) }}</td>
         </tr>
         <tr>
           <td>Month Year</td>
@@ -36,7 +36,7 @@
         </tr>
         <tr>
           <td>Amount</td>
-          <td>{{ transaction.amount }}</td>
+          <td>{{ getRupeeFormat(transaction.amount) }}</td>
         </tr>
         <tr>
           <td>Receipt</td>
@@ -74,9 +74,14 @@
 <script>
 import { deleteTransaction } from "@/services";
 import { mapGetters, mapActions } from "vuex";
-
+import {
+  getRupeeFormat,
+  getDateFormat,
+} from "@/utils/helper/transaction.helper";
 export default {
   methods: {
+    getDateFormat,
+    getRupeeFormat,
     ...mapActions("transaction", ["deleteTransactionList"]),
     onDeleteTransaction(transactionId) {
       deleteTransaction(parseInt(transactionId));

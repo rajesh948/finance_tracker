@@ -52,10 +52,9 @@ export const transaction = {
       state: { transactionList: Array<transactionInterface> },
       transactionId: number
     ) {
-      const index = state.transactionList?.findIndex(
-        (tran) => tran.id === transactionId
+      state.transactionList = state.transactionList.filter(
+        (tran) => tran.id !== transactionId
       );
-      state.transactionList.splice(index, 1);
     },
   },
   actions: {

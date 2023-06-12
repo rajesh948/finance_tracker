@@ -37,10 +37,9 @@ export const editTransaction = (transaction: transactionInterface) => {
   localStorage.setItem("transactionList", JSON.stringify(transactionList));
 };
 export const deleteTransaction = (transactionId: number) => {
-  const transactionList = fetchAllTransaction() || [];
-  const index = transactionList.findIndex(
-    (tran: transactionInterface) => tran.id === transactionId
+  const transactionList = fetchAllTransaction()?.filter(
+    (tran: transactionInterface) => tran.id !== transactionId
   );
-  transactionList.splice(index, 1);
+
   localStorage.setItem("transactionList", JSON.stringify(transactionList));
 };

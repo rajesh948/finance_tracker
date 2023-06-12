@@ -122,8 +122,11 @@
   </v-card>
 </template>
 <script>
-import { fieldColors } from "@/utils/helper/transaction.helper";
-import moment from "moment";
+import {
+  getColor,
+  getRupeeFormat,
+  getDateFormat,
+} from "@/utils/helper/transaction.helper";
 export default {
   props: {
     transactions: {
@@ -183,6 +186,9 @@ export default {
     );
   },
   methods: {
+    getColor,
+    getDateFormat,
+    getRupeeFormat,
     onGoToViewPage(transactionId) {
       this.$router.push({
         name: "viewTransaction",
@@ -194,19 +200,6 @@ export default {
         name: "editTransaction",
         params: { transactionId: transactionId },
       });
-    },
-    getColor(fieldName) {
-      return fieldColors.find((field) => field.name === fieldName).color;
-    },
-    getDateFormat(date) {
-      return moment(date).format("LL");
-    },
-    getRupeeFormat(amount) {
-      const rupee = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-      });
-      return rupee.format(amount);
     },
     onSortTransactionField(fieldName) {
       if (this.sortField != fieldName) {
